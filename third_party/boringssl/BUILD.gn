@@ -106,6 +106,13 @@ if (is_win && !is_msan && current_cpu != "arm64") {
       } else {
         public_configs = [ ":no_asm_config" ]
       }
+    } else if (current_cpu == "ppc64") {
+      if (is_linux) {
+        # TODO: ppc64 (be) check
+        sources += crypto_sources_linux_ppc64le
+      } else {
+        public_configs = [ ":no_asm_config" ]
+      }
     } else {
       public_configs = [ ":no_asm_config" ]
     }
