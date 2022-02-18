@@ -57,6 +57,8 @@ def _WriteGn(fd):
   _WriteArray(fd, "arm64_asm_sources", _Glob("libdav1d/src/arm/64/*.S"))
   _WriteArray(fd, "arm_template_sources", _Glob("libdav1d/src/arm/*_tmpl.c"))
 
+  _WriteArray(fd, "ppc64_template_sources", _Glob("libdav1d/src/ppc/*_tmpl.c"))
+
   template_sources = _Glob("libdav1d/src/*_tmpl.c")
   _WriteArray(fd, "template_sources", template_sources)
 
