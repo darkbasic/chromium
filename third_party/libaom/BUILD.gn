@@ -208,6 +208,18 @@ if (enable_libaom) {
     }
   }
 
+  if (current_cpu == "ppc64") {
+    source_set("libaom_intrinsics_vsx") {
+      configs -= [ "//build/config/compiler:chromium_code" ]
+      configs += [ "//build/config/compiler:no_chromium_code" ]
+      configs += [ ":libaom_config" ]
+      sources = [
+        "//third_party/libaom/source/libaom/aom_ports/ppc_cpudetect.c",
+      ]
+      sources += aom_av1_common_intrin_vsx
+    }
+  }
+
   static_library("libaom") {
     if (!is_debug && is_win) {
       configs -= [ "//build/config/compiler:default_optimization" ]
@@ -257,6 +269,9 @@ if (enable_libaom) {
     if (current_cpu == "arm64" || cpu_arch_full == "arm-neon" ||
         cpu_arch_full == "arm-neon-cpu-detect") {
       deps += [ ":libaom_intrinsics_neon" ]
+    }
+    if (current_cpu == "ppc64") {
+      deps += [ ":libaom_intrinsics_vsx" ]
     }
     if (is_android) {
       deps += [ "//third_party/android_ndk:cpu_features" ]
