@@ -77,7 +77,7 @@ ResultExpr RendererProcessPolicy::EvaluateSyscall(int sysno) const {
     case __NR_ftruncate64:
 #endif
 #if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
-    defined(__aarch64__)
+    defined(__aarch64__) || defined(__powerpc64__)
     case __NR_getrlimit:
     case __NR_setrlimit:
 // We allow setrlimit to dynamically adjust the address space limit as

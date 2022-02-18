@@ -58,9 +58,9 @@
 
 #elif defined(__powerpc64__)
 
-#include <asm/unistd.h>
+#include <asm-generic/unistd.h>
 #define MIN_SYSCALL 0u
-#define MAX_PUBLIC_SYSCALL 386u
+#define MAX_PUBLIC_SYSCALL __NR_syscalls
 #define MAX_SYSCALL MAX_PUBLIC_SYSCALL
 
 #else
