@@ -21,7 +21,7 @@ CHROMIUM_ROOT_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', '..'))
 sys.path.append(os.path.join(CHROMIUM_ROOT_DIR, 'build'))
 import gn_helpers
 
-MESON = ['meson.py']
+MESON = ['meson']
 
 DEFAULT_BUILD_ARGS = [
     '-Denable_tools=false', '-Denable_tests=false', '-Ddefault_library=static',
@@ -196,6 +196,7 @@ def main():
   linux_env = os.environ
   linux_env['CC'] = 'clang'
 
+  GenerateConfig('config/linux/ppc64', linux_env)
   GenerateConfig('config/linux/x64', linux_env)
   GenerateConfig('config/linux-noasm/x64', linux_env, ['-Denable_asm=false'])
 
